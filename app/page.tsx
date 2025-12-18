@@ -7,11 +7,9 @@ const IntroAnimation = dynamic(() => import('./components/IntroAnimation'), {
 });
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
+import { useEffect } from 'react';
 import SkillsSection from './components/SkillsSection';
 import ProjectsSection from './components/ProjectsSection';
-import ServicesSection from './components/ServicesSection';
-import PricingSection from './components/PricingSection';
-import TestimonialsSection from './components/TestimonialsSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import CodingBackground from './components/CodingBackground';
@@ -19,10 +17,29 @@ import ThemeToggle from './components/ThemeToggle';
 import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import FAB from './components/FAB';
+import ScrollTrigger from "gsap/ScrollTrigger";
+import SmoothScroll from "./gsap/SmoothScroll";
+import gsap from 'gsap';
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  useEffect(() => {
+     gsap.to(".horizontal-wrapper", {
+      x: "-200vw",
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".horizontal-section",
+        start: "top top",
+        end: "bottom+=2000 top",
+        scrub: true,
+        pin: true,
+      },
+    });
+  })
   return (
+    <SmoothScroll>
     <main className="min-h-screen relative overflow-hidden">
+      
       <IntroAnimation />
       <CodingBackground />
       <CustomCursor />
@@ -31,13 +48,12 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <SkillsSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <PricingSection />
-      <TestimonialsSection />
+      <ProjectsSection/>
       <ContactSection />
       <FAB />
       <Footer />
     </main>
+          </SmoothScroll>
+
   );
 }

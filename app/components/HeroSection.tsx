@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import CountUp from '../features/Count';
 
 export default function HeroSection() {
   const [displayText, setDisplayText] = useState('');
@@ -140,20 +141,7 @@ export default function HeroSection() {
               </motion.div>
 
               {/* Floating elements */}
-              <motion.div
-                className="absolute -top-4 -right-4 w-12 h-12 bg-cyan-400 rounded-full flex items-center justify-center text-black font-bold text-xl"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                💻
-              </motion.div>
-              <motion.div
-                className="absolute -bottom-4 -left-4 w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-xl"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-              >
-                🚀
-              </motion.div>
+             
             </div>
           </motion.div>
         </div>
@@ -174,7 +162,8 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 1.2 + index * 0.1 }}
             >
               <div className="text-3xl md:text-4xl font-bold bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent mb-2">
-                {stat.value}{stat.suffix}
+                <CountUp to={stat.value} duration={2} delay={1.2 + index * 0.1} onStart={() => {}} onEnd={() => {}} />
+                {stat.suffix}
               </div>
               <div className="text-gray-400 text-sm md:text-base">{stat.label}</div>
             </motion.div>

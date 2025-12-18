@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import {GridScan} from '../features/GridScan';
 
 export default function IntroAnimation() {
   const [isVisible, setIsVisible] = useState(true);
@@ -17,6 +18,33 @@ export default function IntroAnimation() {
   );
 
   useEffect(() => {
+    // Disable scrolling during intro
+    document.body.style.overflow = 'hidden';
+
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
+    const preventKeyScroll = (e: KeyboardEvent) => {
+      if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Space', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.code)) {
+        e.preventDefault();
+      }
+    };
+
+    // Add event listeners to prevent scrolling
+    document.addEventListener('wheel', preventScroll, { passive: false });
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+    document.addEventListener('keydown', preventKeyScroll);
+
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.removeEventListener('wheel', preventScroll);
+      document.removeEventListener('touchmove', preventScroll);
+      document.removeEventListener('keydown', preventKeyScroll);
+    };
+  }, []);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
     }, 4000);
@@ -29,16 +57,35 @@ export default function IntroAnimation() {
       {isVisible && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          exit={{ opacity: 0, scale: 1.2 }}
           transition={{ duration: 1 }}
           className="fixed inset-0 z-50 bg-black flex items-center justify-center overflow-hidden"
         >
-          {/* Background particles */}
+          {/* GridScan Background */}
+          <div className="absolute inset-0 z-[-1]">
+            <GridScan
+              sensitivity={0.55}
+              lineThickness={1}
+              linesColor="#392e4e"
+              gridScale={0.1}
+              scanColor="#FF9FFC"
+              scanOpacity={0.4}
+              enablePost
+              bloomIntensity={0.6}
+              chromaticAberration={0.002}
+              noiseIntensity={0.01}
+              className=""
+              style={{}}
+            />
+          </div>
+
+          {/* Background particles with enhanced lights */}
           <div className="absolute inset-0">
             {particles.map((particle) => (
               <motion.div
                 key={particle.id}
-                className="absolute w-1 h-1 bg-cyan-400 rounded-full"
+                className="absolute w-2 h-2 bg-cyan-400 rounded-full shadow-lg"
+                style={{ boxShadow: '0 0 10px rgba(0, 255, 255, 0.8)' }}
                 initial={{
                   x: particle.initialX,
                   y: particle.initialY,
@@ -47,7 +94,7 @@ export default function IntroAnimation() {
                 }}
                 animate={{
                   opacity: [0, 1, 0],
-                  scale: [0, 1, 0],
+                  scale: [0, 1.5, 0],
                   x: particle.animateX,
                   y: particle.animateY,
                 }}
@@ -74,14 +121,35 @@ export default function IntroAnimation() {
               }}
               className="mb-8"
             >
-              <motion.h1
-                className="text-6xl md:text-8xl font-black bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 1 }}
+              <motion.div
+                className="text-6xl md:text-8xl font-black bg-linear-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent flex justify-center"
+                initial="hidden"
+                animate="visible"
+                exit={{ scale: 20, opacity: 0 }}
+                transition={{ duration: 1 }}
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: {
+                      staggerChildren: 0.2
+                    }
+                  }
+                }}
               >
-                OMAR
-              </motion.h1>
+                {"OMAR".split("").map((letter, index) => (
+                  <motion.span
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, y: 20 },
+                      visible: { opacity: 1, y: 0 }
+                    }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+              </motion.div>
               <motion.h2
                 className="text-2xl md:text-4xl font-bold text-white mt-2"
                 initial={{ opacity: 0, y: 20 }}

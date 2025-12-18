@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Providers } from './providers';
-import SmoothScroll from './components/SmoothScroll';
+import SmoothScroll from './gsap/SmoothScroll';
 import "./globals.scss";
-
+import { setupGSAP } from './data/gsapSetup';
+setupGSAP();
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
