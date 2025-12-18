@@ -1,4 +1,4 @@
-# Portfolio Pro Template
+# Portfolio-V1 Template
 
 A modern, fully-featured portfolio template built with Next.js, designed to showcase projects and skills with stunning animations, responsive design, and clean, maintainable code. This is not a personal portfolio but a comprehensive template project created to demonstrate the use of various tools and best practices for building professional portfolios that are easy to customize and extend.
 
