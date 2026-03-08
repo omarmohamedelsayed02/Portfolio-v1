@@ -811,7 +811,7 @@ function srgbColor(hex) {
 
 function smoothDampVec2(current, target, currentVelocity, smoothTime, maxSpeed, deltaTime) {
   const out = current.clone();
-  smoothTime = Math.max(0.0001, smoothTime);
+  smoothTime = Math.max(0.0002, smoothTime);
   const omega = 2 / smoothTime;
   const x = omega * deltaTime;
   const exp = 1 / (1 + x + 0.48 * x * x + 0.235 * x * x * x);

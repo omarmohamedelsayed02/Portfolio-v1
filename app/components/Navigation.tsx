@@ -42,11 +42,11 @@ export default function Navigation() {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-2 xs:px-3 sm:px-4 md:px-6 py-2 xs:py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.div
-            className="text-2xl font-bold bg-linear-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent cursor-pointer"
+            className="text-xl xs:text-2xl font-bold bg-linear-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent cursor-pointer"
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection('#home')}
           >
@@ -54,11 +54,11 @@ export default function Navigation() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-4 xl:space-x-8">
             {navItems.map((item) => (
               <motion.button
                 key={item.name}
-                className="text-slate-400 hover:text-white transition-colors duration-300 relative"
+                className="text-xs xl:text-sm text-slate-400 hover:text-white transition-colors duration-300 relative"
                 onClick={() => scrollToSection(item.href)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -76,23 +76,23 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden w-10 h-10 flex items-center justify-center"
+            className="lg:hidden w-8 h-8 xs:w-10 xs:h-10 flex items-center justify-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             whileTap={{ scale: 0.9 }}
           >
             <motion.div
-              className="w-6 h-0.5 bg-white relative"
-              animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -8 }}
+              className="w-5 h-0.5 bg-white relative"
+              animate={isMobileMenuOpen ? { rotate: 45, y: 0 } : { rotate: 0, y: -6 }}
               transition={{ duration: 0.2 }}
             />
             <motion.div
-              className="w-6 h-0.5 bg-white absolute"
+              className="w-5 h-0.5 bg-white absolute"
               animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
               transition={{ duration: 0.2 }}
             />
             <motion.div
-              className="w-6 h-0.5 bg-white absolute"
-              animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 8 }}
+              className="w-5 h-0.5 bg-white absolute"
+              animate={isMobileMenuOpen ? { rotate: -45, y: 0 } : { rotate: 0, y: 6 }}
               transition={{ duration: 0.2 }}
             />
           </motion.button>
@@ -102,21 +102,21 @@ export default function Navigation() {
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
-              className="md:hidden mt-4 pb-4 border-t border-white/10"
+              className="lg:hidden mt-2 xs:mt-3 pb-2 xs:pb-3 border-t border-white/10"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="flex flex-col space-y-4 pt-4">
+              <div className="flex flex-col space-y-2 xs:space-y-3 pt-2 xs:pt-3 max-h-64 overflow-y-auto">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.name}
-                    className="text-left text-slate-400 hover:text-white transition-colors duration-300 py-2"
+                    className="text-left text-sm xs:text-base text-slate-400 hover:text-white transition-colors duration-300 py-1.5 xs:py-2"
                     onClick={() => scrollToSection(item.href)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.2, delay: index * 0.1 }}
+                    transition={{ duration: 0.2, delay: index * 0.05 }}
                   >
                     {item.name}
                   </motion.button>
@@ -129,3 +129,4 @@ export default function Navigation() {
     </motion.nav>
   );
 }
+

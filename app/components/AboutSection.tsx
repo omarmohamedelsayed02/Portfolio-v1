@@ -5,10 +5,10 @@ import FloatingParticles from './FloatingParticles';
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-20 relative">
+    <section id="about" className="py-12 xs:py-16 sm:py-20 relative">
       <FloatingParticles />
-      <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-3 xs:px-4 sm:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 xs:gap-8 lg:gap-12 items-center">
           <motion.div
             className="about-visual"
             initial={{ opacity: 0, x: -50 }}
@@ -16,13 +16,13 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-80 h-80 mx-auto relative">
-              <div className="absolute inset-0 bg-linea-to-br from-indigo-500 via-purple-600 to-cyan-500 rounded-3xl animate-pulse"></div>
-              <div className="absolute inset-4 bg-slate-900 rounded-2xl flex items-center justify-center text-6xl">
+            <div className="w-56 h-56 xs:w-64 xs:h-64 sm:w-80 sm:h-80 mx-auto relative">
+              <div className="absolute inset-0 bg-linea-to-br from-indigo-500 via-purple-600 to-cyan-500 rounded-2xl xs:rounded-3xl animate-pulse"></div>
+              <div className="absolute inset-3 xs:inset-4 bg-slate-900 rounded-xl xs:rounded-2xl flex items-center justify-center text-4xl xs:text-5xl sm:text-6xl">
                 👨‍💻
               </div>
               {/* Floating Elements */}
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400 rounded-full animate-bounce animation-delay-500"></div>
+              <div className="absolute -bottom-3 xs:-bottom-4 -left-3 xs:-left-4 w-4 h-4 xs:w-6 xs:h-6 bg-purple-400 rounded-full animate-bounce animation-delay-500"></div>
             </div>
           </motion.div>
 
@@ -34,7 +34,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
           >
             <motion.h2
-              className="text-5xl font-black mb-6"
+              className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-black mb-4 xs:mb-6"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -44,7 +44,7 @@ export default function AboutSection() {
             </motion.h2>
 
             <motion.p
-              className="text-lg text-slate-400 mb-6 leading-relaxed"
+              className="text-xs xs:text-sm sm:text-base md:text-lg text-slate-400 mb-4 xs:mb-6 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -54,7 +54,7 @@ export default function AboutSection() {
             </motion.p>
 
             <motion.p
-              className="text-lg text-slate-400 mb-8 leading-relaxed"
+              className="text-xs xs:text-sm sm:text-base md:text-lg text-slate-400 mb-6 xs:mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -64,31 +64,31 @@ export default function AboutSection() {
             </motion.p>
 
             <motion.div
-              className="grid grid-cols-2 gap-6"
+              className="grid grid-cols-2 gap-2 xs:gap-4 sm:gap-6"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
               viewport={{ once: true }}
             >
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl mb-3">🎓</div>
-                <div className="font-bold mb-2">Education</div>
-                <div className="text-sm text-slate-400">Computer Science Student</div>
+              <div className="bg-white/5 backdrop-blur-sm p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-2xl xs:text-3xl mb-2 xs:mb-3">🎓</div>
+                <div className="font-bold mb-1 xs:mb-2 text-sm xs:text-base">Education</div>
+                <div className="text-xs xs:text-sm text-slate-400">Computer Science Student</div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl mb-3">💼</div>
-                <div className="font-bold mb-2">Experience</div>
-                <div className="text-sm text-slate-400">2+ Years</div>
+              <div className="bg-white/5 backdrop-blur-sm p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-2xl xs:text-3xl mb-2 xs:mb-3">💼</div>
+                <div className="font-bold mb-1 xs:mb-2 text-sm xs:text-base">Experience</div>
+                <div className="text-xs xs:text-sm text-slate-400">2+ Years</div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl mb-3">🚀</div>
-                <div className="font-bold mb-2">Projects</div>
-                <div className="text-sm text-slate-400">10+ Completed</div>
+              <div className="bg-white/5 backdrop-blur-sm p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-2xl xs:text-3xl mb-2 xs:mb-3">🚀</div>
+                <div className="font-bold mb-1 xs:mb-2 text-sm xs:text-base">Projects</div>
+                <div className="text-xs xs:text-sm text-slate-400">10+ Completed</div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
-                <div className="text-3xl mb-3">🌟</div>
-                <div className="font-bold mb-2">Specialty</div>
-                <div className="text-sm text-slate-400">Full Stack</div>
+              <div className="bg-white/5 backdrop-blur-sm p-3 xs:p-4 sm:p-6 rounded-xl xs:rounded-2xl border border-white/10 hover:border-indigo-500/50 transition-all duration-300 transform hover:scale-105">
+                <div className="text-2xl xs:text-3xl mb-2 xs:mb-3">🌟</div>
+                <div className="font-bold mb-1 xs:mb-2 text-sm xs:text-base">Specialty</div>
+                <div className="text-xs xs:text-sm text-slate-400">Full Stack</div>
               </div>
             </motion.div>
           </motion.div>
@@ -97,3 +97,4 @@ export default function AboutSection() {
     </section>
   );
 }
+

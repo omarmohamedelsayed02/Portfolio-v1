@@ -9,6 +9,10 @@ const config: Config = {
   darkMode:"class",
   theme: {
     extend: {
+      screens: {
+        'xs': '320px',
+        '3xs': '280px',
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
@@ -36,3 +40,4 @@ const config: Config = {
 };
 
 export default config;
+
